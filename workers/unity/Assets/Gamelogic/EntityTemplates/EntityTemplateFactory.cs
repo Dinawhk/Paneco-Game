@@ -41,17 +41,17 @@ namespace Assets.Gamelogic.EntityTemplates
             return playerTemplate;
         }
 
-        public static Entity CreateCubeTemplate()
+        public static Entity CreateFlagTemplate()
         {
-            var cubeTemplate = EntityBuilder.Begin()
+            var flagTemplate = EntityBuilder.Begin()
                 .AddPositionComponent(Improbable.Coordinates.ZERO.ToUnityVector(), CommonRequirementSets.PhysicsOnly)
-                .AddMetadataComponent(entityType: SimulationSettings.CubePrefabName)
+                .AddMetadataComponent(entityType: SimulationSettings.FlagPrefabName)
                 .SetPersistence(true)
                 .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
                 .AddComponent(new Rotation.Data(Quaternion.identity.ToNativeQuaternion()), CommonRequirementSets.PhysicsOnly)
                 .Build();
 
-            return cubeTemplate;
+            return flagTemplate;
         }
     }
 }
