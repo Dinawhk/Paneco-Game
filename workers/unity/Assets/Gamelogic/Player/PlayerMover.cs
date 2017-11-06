@@ -26,6 +26,7 @@ public class PlayerMover : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		var joystick = PlayerInputReader.Data.joystick;
+
 		var direction = new Vector3(joystick.xAxis, 0, joystick.yAxis);
 
 
@@ -36,9 +37,6 @@ public class PlayerMover : MonoBehaviour {
 			.SetCoords(new Coordinates(pos.x, pos.y, pos.z));
 		PositionWriter.Send(positionUpdate);
 
-		var rotationUpdate = new Rotation.Update()
-			.SetRotation(rigidbody.rotation.ToNativeQuaternion());
-		RotationWriter.Send(rotationUpdate);
 	}
 
 

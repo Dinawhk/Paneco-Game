@@ -3,6 +3,7 @@ using Improbable.Core;
 using Improbable.Unity.Visualizer;
 using Improbable.Worker;
 using UnityEngine;
+using Improbable.Player;
 
 namespace Assets.Gamelogic.Core
 {
