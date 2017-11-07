@@ -29,8 +29,7 @@ public class PlayerMover : MonoBehaviour {
 
 		var direction = new Vector3(joystick.xAxis, 0, joystick.yAxis);
 
-
-		rigidbody.AddForce(direction * SimulationSettings.PlayerAcceleration);
+		transform.Translate (direction * Time.deltaTime * SimulationSettings.PlayerAcceleration);
 
 		var pos = rigidbody.position;
 		var positionUpdate = new Position.Update()
