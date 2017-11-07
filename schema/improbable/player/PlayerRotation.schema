@@ -1,0 +1,6 @@
+package improbable.player;
+ 
+component PlayerRotation {
+    id = 1100;
+    float bearing = 1;
+}
