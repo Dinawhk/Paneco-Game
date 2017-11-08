@@ -1,5 +1,7 @@
 package improbable.player;
 
+type Movement {}
+type Idle {}
 type Joystick {
     float x_axis = 1;
     float y_axis = 2;
@@ -8,4 +10,7 @@ type Joystick {
 component PlayerInput {
     id = 1004;
     Joystick joystick = 1;
+
+    event Movement movement;
+    event Idle idle;
 }
