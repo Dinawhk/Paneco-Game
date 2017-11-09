@@ -9,11 +9,10 @@ namespace Assets.Gamelogic.Player
     public class ThirdPersonCamera : MonoBehaviour
     {
         [Require]
-        private ClientAuthorityCheck.Writer ClientAuthorityCheckWriter;
-
-        [Require]
         private PlayerRotation.Writer PlayerRotationWriter;
 
+        [Require]
+        private ClientAuthorityCheck.Writer ClientAuthorityCheckWriter;
 
         private Transform camera;
         private UnityEngine.Quaternion cameraRotation;
@@ -66,19 +65,28 @@ namespace Assets.Gamelogic.Player
 
         // If the user holds right mouse button and moves their mouse about, the camera rotates around the player
         private void SelectNextCameraRotation()
-        {            
-                var yaw = (cameraRotation.eulerAngles.y + Input.GetAxis("Mouse X") * SimulationSettings.ThirdPersonCameraSensitivity) % 360f;
-                var pitch = Mathf.Clamp(cameraRotation.eulerAngles.x - Input.GetAxis("Mouse Y") * SimulationSettings.ThirdPersonCameraSensitivity,
-                        SimulationSettings.ThirdPersonCameraMinPitch,
-                        SimulationSettings.ThirdPersonCameraMaxPitch);
-                cameraRotation = UnityEngine.Quaternion.Euler(new Vector3(pitch, yaw, 0));
+        {
+            var yaw = (transform.rotation.eulerAngles.y + Input.GetAxis("Mouse X") * SimulationSettings.ThirdPersonCameraSensitivity) % 360f;
+            var pitch = Mathf.Clamp(cameraRotation.eulerAngles.x - Input.GetAxis("Mouse Y") * SimulationSettings.ThirdPersonCameraSensitivity,
+                    SimulationSettings.ThirdPersonCameraMinPitch,
+                    SimulationSettings.ThirdPersonCameraMaxPitch);
 
-                if (!Input.GetKey(KeyCode.LeftAlt))
-                {
-                    // Update the yaw value of the Player transform
-                    transform.rotation = UnityEngine.Quaternion.Euler(new Vector3(0, yaw, 0));
-                    PlayerRotationWriter.Send(new PlayerRotation.Update().SetBearing(transform.eulerAngles.y));
+
+            if (!Input.GetKey(KeyCode.LeftAlt))
+            {
+                // Update the yaw value of the Player transform
+                transform.rotation = UnityEngine.Quaternion.Euler(new Vector3(0, yaw, 0));
+                PlayerRotationWriter.Send(new PlayerRotation.Update().SetBearing(transform.eulerAngles.y));
             }
+            else
+            {
+                var yaw2 = (cameraRotation.eulerAngles.y + Input.GetAxis("Mouse X") * SimulationSettings.ThirdPersonCameraSensitivity) % 360f;
+                cameraRotation = UnityEngine.Quaternion.Euler(new Vector3(pitch, yaw2, 0));
+
+            }
+
+
+
         }
 
     }
