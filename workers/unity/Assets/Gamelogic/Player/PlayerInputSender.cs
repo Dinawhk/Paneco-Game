@@ -13,7 +13,6 @@ public class PlayerInputSender : MonoBehaviour
     [Require] private PlayerInput.Writer PlayerInputWriter;
 			
 		private bool walking;
-		float rotSpeed = 20f;
 
     void Update ()
     {

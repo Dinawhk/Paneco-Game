@@ -14,10 +14,9 @@ public class PlayerMover : MonoBehaviour {
 
 	[Require] private Position.Writer PositionWriter;
 	[Require] private Rotation.Writer RotationWriter;
-
-
+	[Require] private PlayerInput.Reader PlayerInputReader;
+ 
 	Rigidbody rigidbody;
-	float camRayLenght = 100f;
 
 	void OnEnable ()
 	{
