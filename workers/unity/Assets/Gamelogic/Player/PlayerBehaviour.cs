@@ -25,7 +25,6 @@ public class PlayerBehaviour : MonoBehaviour
 	{
 		PlayerInputReader.MovementTriggered.Remove (OnMovement);
 		PlayerInputReader.IdleTriggered.Remove (OnIdle);
-
 	}
 
 	void Awake () 
@@ -44,6 +43,8 @@ public class PlayerBehaviour : MonoBehaviour
 	{
 		anim.SetBool ("IsRunning", false);
 	}
+
+
 
 	/*void FixedUpdate () 
 	{
