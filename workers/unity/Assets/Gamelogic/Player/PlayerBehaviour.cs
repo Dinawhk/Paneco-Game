@@ -43,27 +43,7 @@ public class PlayerBehaviour : MonoBehaviour
 	{
 		anim.SetBool ("IsRunning", false);
 	}
-
-
-
-	/*void FixedUpdate () 
-	{
-		// Store the input axes.
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxisRaw ("Vertical");
-
-		Turning (h, v);
-	}*/
-
-
-	/* void Turning(float x, float y)
-	{
-		// Create a boolean that is true if either of the input axes is non-zero.
-		bool walking = x != 0f || y != 0f;
-
-		// Tell the animator whether or not the player is walking.
-		anim.SetBool ("IsRunning", walking);
-	}*/
+		
 			 
 
     void OnTriggerEnter(Collider other)
