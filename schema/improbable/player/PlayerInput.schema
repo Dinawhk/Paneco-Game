@@ -2,6 +2,8 @@ package improbable.player;
 
 type Movement {}
 type Idle {}
+type Flagcaptured{}
+
 type Joystick {
     float x_axis = 1;
     float y_axis = 2;
@@ -13,4 +15,5 @@ component PlayerInput {
 
     event Movement movement;
     event Idle idle;
+    event Flagcaptured flagcaptured;
 }

@@ -44,14 +44,4 @@ public class PlayerBehaviour : MonoBehaviour
 		anim.SetBool ("IsRunning", false);
 	}
 		
-			 
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Flag"))
-        {
-            other.gameObject.SetActive(false);
-        }
-    }
-
 }

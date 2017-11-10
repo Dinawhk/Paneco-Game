@@ -75,7 +75,7 @@ namespace Assets.Gamelogic.Player
             if (!Input.GetKey(KeyCode.LeftAlt))
             {
                 // Update the yaw value of the Player transform
-                transform.rotation = UnityEngine.Quaternion.Euler(new Vector3(0, yaw, 0));
+				transform.rotation = UnityEngine.Quaternion.Euler(new Vector3(0, yaw, 0));
                 PlayerRotationWriter.Send(new PlayerRotation.Update().SetBearing(transform.eulerAngles.y));
             }
             else

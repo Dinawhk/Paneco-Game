@@ -11,7 +11,8 @@ public class PlayerInputSender : MonoBehaviour
 {
 
     [Require] private PlayerInput.Writer PlayerInputWriter;
-			
+
+		private bool flagCollided;
 		private bool walking;
 
     void Update ()
@@ -27,13 +28,33 @@ public class PlayerInputSender : MonoBehaviour
 				PlayerInputWriter.Send (new PlayerInput.Update ().AddIdle (new Idle ()));
 			}
 
+			if (flagCollided) 
+			{
+				PlayerInputWriter.Send (new PlayerInput.Update ().AddFlagcaptured (new Flagcaptured ()));
+			}
+
         var update = new PlayerInput.Update();
         update.SetJoystick(new Joystick(xAxis, yAxis));
         PlayerInputWriter.Send(update);
 
     }
 
+		private void OnTriggerEnter(Collider other)
+		{
+			if (other != null && other.gameObject.CompareTag("Flag"))
+			{
+				flagCollided = true;
+			}
+		}
 
+		private void OnTriggerExit(Collider other) 
+		{
+			if (other != null && other.gameObject.CompareTag ("Flag")) 
+			{
+				flagCollided = false;
+			}
+					
+		}
 	}
 
 }
