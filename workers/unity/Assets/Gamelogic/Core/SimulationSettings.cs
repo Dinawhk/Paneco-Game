@@ -28,6 +28,7 @@ namespace Assets.Gamelogic.Core
         public static readonly float ThirdPersonZoomSensitivity = 3f;
         public static readonly float ThirdPersonCameraMinDistance = 4f;
         public static readonly float ThirdPersonCameraMaxDistance = 20f;
+        public static readonly int RotateCameraMouseButton = 1;
         public static readonly float ThirdPersonCameraSensitivity = 4f;
         public static readonly float ThirdPersonCameraMinPitch = 5f;
         public static readonly float ThirdPersonCameraMaxPitch = 70f;
