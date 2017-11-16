@@ -15,11 +15,14 @@ public class PlayerMover : MonoBehaviour {
 	[Require] private Position.Writer PositionWriter;
 	[Require] private Rotation.Writer RotationWriter;
 	[Require] private PlayerInput.Reader PlayerInputReader;
- 
+
+
+
 	Rigidbody rigidbody;
 
 	void OnEnable ()
 	{
+
 		rigidbody = GetComponent<Rigidbody>();
 
 	}

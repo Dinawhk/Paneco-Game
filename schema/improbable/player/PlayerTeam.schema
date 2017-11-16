@@ -1,0 +1,14 @@
+package improbable.player;
+
+enum ColorTeam {
+  RED = 1;
+  BLUE = 2;
+}
+
+type Team {
+  ColorTeam colorteam = 1;
+}
+component PlayerTeam {
+  id = 1111;
+  Team team = 1;
+}
