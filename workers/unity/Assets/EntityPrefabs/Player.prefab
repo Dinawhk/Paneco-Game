@@ -1050,6 +1050,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f66912a2cb44c49bdf0200ddb29a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
+=======
+  playerBody: {fileID: 1950394814649386}
+  new_mat: {fileID: 2100000, guid: 1dcd4ea457239f049875b7a7c8f9509e, type: 2}
+>>>>>>> Stashed changes
 --- !u!114 &114224991020926012
 MonoBehaviour:
   m_ObjectHideFlags: 1

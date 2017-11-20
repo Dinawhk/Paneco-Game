@@ -1,8 +1,10 @@
 ﻿using Assets.Gamelogic.EntityTemplates;
 using Improbable;
+using Improbable.Unity.Core.EntityQueries;
 using Improbable.Entity.Component;
 using Improbable.Core;
 using Improbable.Unity;
+using Improbable.Player;
 using Improbable.Unity.Core;
 using Improbable.Unity.Visualizer;
 using UnityEngine;
@@ -28,11 +30,31 @@ namespace Assets.Gamelogic.Core
 
         private void OnCreatePlayer(ResponseHandle<PlayerCreation.Commands.CreatePlayer, CreatePlayerRequest, CreatePlayerResponse> responseHandle)
         {
+			
             var clientWorkerId = responseHandle.CallerInfo.CallerWorkerId;
-            var playerEntityTemplate = EntityTemplateFactory.CreatePlayerTemplate(clientWorkerId);
-            SpatialOS.Commands.CreateEntity (PlayerCreationWriter, playerEntityTemplate)
-                .OnSuccess (_ => responseHandle.Respond (new CreatePlayerResponse ((int) StatusCode.Success)))
-                .OnFailure (failure => responseHandle.Respond (new CreatePlayerResponse ((int) failure.StatusCode)));
+
+			var query = Query.HasComponent<PlayerTeam> ().ReturnCount ();
+			var teamColor = ColorTeam.RED;
+
+			SpatialOS.Commands.SendQuery (PlayerCreationWriter, query)
+				.OnSuccess (result => {
+					Debug.LogWarning ("Found " + result.EntityCount + " nearby entities with a team component");
+					if((result.EntityCount % 2) == 0)
+					{
+						teamColor = ColorTeam.BLUE;
+						Debug.LogWarning("sei ientraot?" + teamColor);
+
+					}
+				var playerEntityTemplate = EntityTemplateFactory.CreatePlayerTemplate(clientWorkerId, teamColor);
+					SpatialOS.Commands.CreateEntity (PlayerCreationWriter, playerEntityTemplate)
+						.OnSuccess (_ => responseHandle.Respond (new CreatePlayerResponse ((int) StatusCode.Success)))
+						.OnFailure (failure => responseHandle.Respond (new CreatePlayerResponse ((int) failure.StatusCode)));
+				})
+				.OnFailure(errorDetails => Debug.LogWarning("Query failed with error: " + errorDetails));
+			Debug.LogWarning ("Prima di entity: " + teamColor);
+
+
+
         }
     }
 }

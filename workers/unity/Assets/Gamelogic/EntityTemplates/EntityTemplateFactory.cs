@@ -1,7 +1,11 @@
 ﻿using Assets.Gamelogic.Core;
 using Improbable;
+using Improbable.Worker.Query;
+using Improbable.GeneratedCode;
 using Improbable.Core;
+using Improbable.Unity.Core;
 using Improbable.Player;
+using Improbable.Unity.Visualizer;
 using Improbable.Unity.Core.Acls;
 using Improbable.Worker;
 using Quaternion = UnityEngine.Quaternion;
@@ -26,8 +30,15 @@ namespace Assets.Gamelogic.EntityTemplates
             return playerCreatorEntityTemplate;
         }
 
+<<<<<<< Updated upstream
         public static Entity CreatePlayerTemplate(string clientId)
         {
+=======
+
+		public static Entity CreatePlayerTemplate(string clientId, ColorTeam teamColor)
+        {
+					
+>>>>>>> Stashed changes
             var playerTemplate = EntityBuilder.Begin()
                 .AddPositionComponent(new Improbable.Coordinates(SimulationSettings.PlayerSpawnPosition,0,0).ToUnityVector(), CommonRequirementSets.PhysicsOnly)
                 .AddMetadataComponent(entityType: SimulationSettings.PlayerPrefabName)
@@ -38,7 +49,11 @@ namespace Assets.Gamelogic.EntityTemplates
                 .AddComponent(new ClientConnection.Data(SimulationSettings.TotalHeartbeatsBeforeTimeout), CommonRequirementSets.PhysicsOnly)
                 .AddComponent(new PlayerInput.Data(new Joystick(xAxis: 0, yAxis: 0)), CommonRequirementSets.SpecificClientOnly(clientId))
                 .AddComponent(new PlayerRotation.Data(0), CommonRequirementSets.SpecificClientOnly(clientId))
+<<<<<<< Updated upstream
 				.AddComponent(new Health.Data(100), CommonRequirementSets.PhysicsOnly)
+=======
+				.AddComponent(new PlayerTeam.Data(new Team(colorteam: teamColor)),CommonRequirementSets.SpecificClientOnly(clientId)) 
+>>>>>>> Stashed changes
                 .Build();
 
             return playerTemplate;
@@ -46,6 +61,7 @@ namespace Assets.Gamelogic.EntityTemplates
 
         public static Entity CreateFlagTemplate()
         {
+			
             var flagTemplate = EntityBuilder.Begin()
                 .AddPositionComponent(Improbable.Coordinates.ZERO.ToUnityVector(), CommonRequirementSets.PhysicsOnly)
                 .AddMetadataComponent(entityType: SimulationSettings.FlagPrefabName)
