@@ -1,5 +1,4 @@
-﻿
-using Assets.Gamelogic.Core;
+﻿using Assets.Gamelogic.Core;
 using Improbable;
 using Improbable.Core;
 using Improbable.Player;
@@ -13,7 +12,6 @@ namespace Assets.Gamelogic.EntityTemplates
 {
     public class EntityTemplateFactory : MonoBehaviour
     {
-
         public static Entity CreatePlayerCreatorTemplate()
         {
             var playerCreatorEntityTemplate = EntityBuilder.Begin()
@@ -30,7 +28,6 @@ namespace Assets.Gamelogic.EntityTemplates
 
         public static Entity CreatePlayerTemplate(string clientId)
         {
-
             var playerTemplate = EntityBuilder.Begin()
                 .AddPositionComponent(new Improbable.Coordinates(SimulationSettings.PlayerSpawnPosition,0,0).ToUnityVector(), CommonRequirementSets.PhysicsOnly)
                 .AddMetadataComponent(entityType: SimulationSettings.PlayerPrefabName)
@@ -41,7 +38,7 @@ namespace Assets.Gamelogic.EntityTemplates
                 .AddComponent(new ClientConnection.Data(SimulationSettings.TotalHeartbeatsBeforeTimeout), CommonRequirementSets.PhysicsOnly)
                 .AddComponent(new PlayerInput.Data(new Joystick(xAxis: 0, yAxis: 0)), CommonRequirementSets.SpecificClientOnly(clientId))
                 .AddComponent(new PlayerRotation.Data(0), CommonRequirementSets.SpecificClientOnly(clientId))
-				.AddComponent(new PlayerTeam.Data(new Team(colorteam: (ColorTeam)Random.Range(0,System.Enum.GetValues(typeof(ColorTeam)).Length))),CommonRequirementSets.SpecificClientOnly(clientId)) 
+				.AddComponent(new Health.Data(100), CommonRequirementSets.PhysicsOnly)
                 .Build();
 
             return playerTemplate;

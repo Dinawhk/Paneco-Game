@@ -3,6 +3,7 @@ using Improbable.Unity.Visualizer;
 using UnityEngine;
 using Improbable.Player;
 
+
 public class FlagCaptured : MonoBehaviour
 
 {
@@ -25,10 +26,14 @@ public class FlagCaptured : MonoBehaviour
 	{
 		flag = GameObject.FindGameObjectWithTag ("Flag");
 
+
 		if (flag != null)
 		{
 			flag.SetActive (false);
+			GetComponent<Transform> ().GetChild (1).GetComponent<MeshRenderer> ().enabled = true;
 		}
+
+
 	}
 
 
