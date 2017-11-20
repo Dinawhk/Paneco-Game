@@ -42,7 +42,6 @@ namespace Assets.Gamelogic.Core
 					if((result.EntityCount % 2) == 0)
 					{
 						teamColor = ColorTeam.BLUE;
-						Debug.LogWarning("sei ientraot?" + teamColor);
 
 					}
 				var playerEntityTemplate = EntityTemplateFactory.CreatePlayerTemplate(clientWorkerId, teamColor);
@@ -51,9 +50,6 @@ namespace Assets.Gamelogic.Core
 						.OnFailure (failure => responseHandle.Respond (new CreatePlayerResponse ((int) failure.StatusCode)));
 				})
 				.OnFailure(errorDetails => Debug.LogWarning("Query failed with error: " + errorDetails));
-			Debug.LogWarning ("Prima di entity: " + teamColor);
-
-
 
         }
     }

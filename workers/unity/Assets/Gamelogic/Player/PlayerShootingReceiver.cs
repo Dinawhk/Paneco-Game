@@ -12,20 +12,18 @@ public class PlayerShootingReceiver : MonoBehaviour {
 
 	[Require] private PlayerInput.Reader PlayerInputReader;
 
-
-
 	public int speed=20;
-
-
 	ParticleSystem gunParticles;
 	//AudioSource gunAudio;
 	float effectsDisplayTime = 0.2f;
+
 
 	public GameObject shot;
 
 	void Awake ()
 	{
 		gunParticles = GetComponent<ParticleSystem> ();
+
 		//gunAudio = GetComponent<AudioSource> ();
 	}
 
@@ -44,10 +42,9 @@ public class PlayerShootingReceiver : MonoBehaviour {
 
 		//gunAudio.Play ();
 
-
 		gunParticles.Stop ();
 		gunParticles.Play ();
-
+	
 		var myshot=Instantiate(shot, GetComponent<Transform> ().position, GetComponent<Transform> ().rotation) as GameObject;
 		myshot.GetComponent <Rigidbody>().velocity = GetComponent<Transform> ().up * speed;
 	}

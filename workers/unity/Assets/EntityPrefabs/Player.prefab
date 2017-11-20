@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 114861989225288880}
   - component: {fileID: 114701970551017126}
   - component: {fileID: 114883412707566258}
+  - component: {fileID: 114258549548380736}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1050,11 +1051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f66912a2cb44c49bdf0200ddb29a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-=======
-  playerBody: {fileID: 1950394814649386}
-  new_mat: {fileID: 2100000, guid: 1dcd4ea457239f049875b7a7c8f9509e, type: 2}
->>>>>>> Stashed changes
 --- !u!114 &114224991020926012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1066,6 +1062,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03062118b378e419d9f4cd7ec974ecd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114258549548380736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1529690679125658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11357fbb4b44e40d7901aeae8b7633d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBody: {fileID: 1950394814649386}
+  new_mat: {fileID: 2100000, guid: 1dcd4ea457239f049875b7a7c8f9509e, type: 2}
 --- !u!114 &114403702903192286
 MonoBehaviour:
   m_ObjectHideFlags: 1
