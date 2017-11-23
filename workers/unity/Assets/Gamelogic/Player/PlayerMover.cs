@@ -13,13 +13,16 @@ using Improbable.Unity.Visualizer;
 public class PlayerMover : MonoBehaviour {
 
 	[Require] private Position.Writer PositionWriter;
-	[Require] private Rotation.Writer RotationWriter;
+	//[Require] private Rotation.Writer RotationWriter;
 	[Require] private PlayerInput.Reader PlayerInputReader;
- 
+
+
+
 	Rigidbody rigidbody;
 
 	void OnEnable ()
 	{
+
 		rigidbody = GetComponent<Rigidbody>();
 
 	}
@@ -31,6 +34,9 @@ public class PlayerMover : MonoBehaviour {
 		var direction = new Vector3(joystick.xAxis, 0, joystick.yAxis);
 
 		transform.Translate (direction * Time.deltaTime * SimulationSettings.PlayerAcceleration);
+		//rigidbody.AddForce(direction * SimulationSettings.PlayerAcceleration);
+
+
 
 		var pos = rigidbody.position;
 		var positionUpdate = new Position.Update()

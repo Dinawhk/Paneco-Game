@@ -13,7 +13,7 @@ namespace Assets.Gamelogic.Player
 
         void OnEnable()
         {
-            transform.rotation = UnityEngine.Quaternion.Euler(Vector3.up * PlayerRotationReader.Data.bearing);
+            //transform.rotation = UnityEngine.Quaternion.Euler(Vector3.up * PlayerRotationReader.Data.bearing);
 
             PlayerRotationReader.ComponentUpdated.Add(OnComponentUpdated);
         }
@@ -29,7 +29,7 @@ namespace Assets.Gamelogic.Player
             {
                 if (update.bearing.HasValue)
                 {
-                    transform.rotation = UnityEngine.Quaternion.Euler(Vector3.up * update.bearing.Value);
+                   transform.rotation = UnityEngine.Quaternion.Euler(Vector3.up * update.bearing.Value);
                 }
             }
         }

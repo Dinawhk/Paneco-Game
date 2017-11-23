@@ -10,21 +10,21 @@ namespace Assets.Gamelogic.Core
     public class TransformReceiver : MonoBehaviour
     {
         [Require] private Position.Reader PositionReader;
-        [Require] private Rotation.Reader RotationReader;
+      //  [Require] private Rotation.Reader RotationReader;
 
         void OnEnable()
         {
             transform.position = PositionReader.Data.coords.ToUnityVector();
-            transform.rotation = RotationReader.Data.rotation.ToUnityQuaternion();
+            //transform.rotation = RotationReader.Data.rotation.ToUnityQuaternion();
 
             PositionReader.ComponentUpdated.Add(OnPositionUpdated);
-            RotationReader.ComponentUpdated.Add(OnRotationUpdated);
+            //RotationReader.ComponentUpdated.Add(OnRotationUpdated);
         }
 
         void OnDisable()
         {
             PositionReader.ComponentUpdated.Remove(OnPositionUpdated);
-            RotationReader.ComponentUpdated.Remove(OnRotationUpdated);
+          //  RotationReader.ComponentUpdated.Remove(OnRotationUpdated);
         }
 
         void OnPositionUpdated(Position.Update update)
@@ -37,7 +37,7 @@ namespace Assets.Gamelogic.Core
                 }
             }
         }
-
+/*
         void OnRotationUpdated(Rotation.Update update)
         {
             if (RotationReader.Authority == Authority.NotAuthoritative)
@@ -48,5 +48,6 @@ namespace Assets.Gamelogic.Core
                 }
             }
         }
+        */
     }
 }
