@@ -21,7 +21,7 @@ namespace Assets.Gamelogic.Core
         public static readonly float PlayerEntityCreationRetrySecs = 4;
 
 
-        public static readonly Quaternion InitialThirdPersonCameraRotation = Quaternion.Euler(30, 0, 0);
+        public static readonly Quaternion InitialThirdPersonCameraRotation = Quaternion.Euler(18, 0, 0);
         public static readonly float InitialThirdPersonCameraDistance = 14;
 
         public static readonly string MouseScrollWheel = "Mouse ScrollWheel";

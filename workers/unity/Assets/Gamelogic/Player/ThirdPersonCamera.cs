@@ -72,7 +72,7 @@ namespace Assets.Gamelogic.Player
                     SimulationSettings.ThirdPersonCameraMaxPitch);
 
 
-            if (!Input.GetKey(KeyCode.LeftAlt))
+            if (!Input.GetMouseButtonDown(1))
             {
                 // Update the yaw value of the Player transform
 				transform.rotation = UnityEngine.Quaternion.Euler(new Vector3(0, yaw, 0));
@@ -83,6 +83,10 @@ namespace Assets.Gamelogic.Player
                 var yaw2 = (cameraRotation.eulerAngles.y + Input.GetAxis("Mouse X") * SimulationSettings.ThirdPersonCameraSensitivity) % 360f;
                 cameraRotation = UnityEngine.Quaternion.Euler(new Vector3(pitch, yaw2, 0));
 
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                cameraRotation = UnityEngine.Quaternion.Euler(new Vector3(pitch, 18, 0));
             }
 
         }
