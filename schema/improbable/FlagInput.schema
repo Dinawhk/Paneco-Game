@@ -1,0 +1,13 @@
+package improbable;
+
+type FlagJoystick
+{
+  float x_axis = 1;
+  float z_axis = 2;
+}
+
+component FlagInput
+{
+  id = 1460;
+  FlagJoystick joystick = 1;
+}

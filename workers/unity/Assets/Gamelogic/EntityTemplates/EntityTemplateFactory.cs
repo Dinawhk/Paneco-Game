@@ -37,12 +37,13 @@ namespace Assets.Gamelogic.EntityTemplates
                 .AddPositionComponent(new Improbable.Coordinates(SimulationSettings.PlayerSpawnPosition,0,0).ToUnityVector(), CommonRequirementSets.PhysicsOnly)
                 .AddMetadataComponent(entityType: SimulationSettings.PlayerPrefabName)
                 .SetPersistence(false)
-                .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+				.SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
                 //.AddComponent(new Rotation.Data(Quaternion.identity.ToNativeQuaternion()), CommonRequirementSets.PhysicsOnly)
                 .AddComponent(new ClientAuthorityCheck.Data(), CommonRequirementSets.SpecificClientOnly(clientId))
                 .AddComponent(new ClientConnection.Data(SimulationSettings.TotalHeartbeatsBeforeTimeout), CommonRequirementSets.PhysicsOnly)
                 .AddComponent(new PlayerInput.Data(new Joystick(xAxis: 0, yAxis: 0)), CommonRequirementSets.SpecificClientOnly(clientId))
-                .AddComponent(new PlayerRotation.Data(0), CommonRequirementSets.SpecificClientOnly(clientId))
+				.AddComponent(new HaveFlag.Data(false), CommonRequirementSets.SpecificClientOnly(clientId))
+				.AddComponent(new PlayerRotation.Data(0), CommonRequirementSets.SpecificClientOnly(clientId))
 			    .AddComponent(new Health.Data(100), CommonRequirementSets.PhysicsOnly)
 		  		.AddComponent(new PlayerTeam.Data(new Team(colorteam: teamColor)),CommonRequirementSets.SpecificClientOnly(clientId))
                 .Build();
@@ -58,6 +59,7 @@ namespace Assets.Gamelogic.EntityTemplates
                 .AddMetadataComponent(entityType: SimulationSettings.FlagPrefabName)
                 .SetPersistence(true)
                 .SetReadAcl(CommonRequirementSets.PhysicsOrVisual)
+				.AddComponent(new FlagInput.Data(new FlagJoystick(xAxis: 0 ,zAxis: 0)),CommonRequirementSets.PhysicsOrVisual)
                 .AddComponent(new Rotation.Data(Quaternion.identity.ToNativeQuaternion()), CommonRequirementSets.PhysicsOnly)
                 .Build();
 

@@ -2,6 +2,8 @@ using UnityEngine;
 using Improbable.Unity;
 using Improbable.Unity.Visualizer;
 using Improbable.Player;
+using Improbable;
+using Assets.Gamelogic.Core;
 
 
 namespace Assets.Gamelogic.Player {
@@ -11,8 +13,12 @@ public class PlayerInputSender : MonoBehaviour
 {
 
     [Require] private PlayerInput.Writer PlayerInputWriter;
+	 
 
-		private bool flagCollided;
+
+	//[Require] private HaveFlag.Writer HaveFlagWriter;
+
+		private bool flagCollided = false;
 		private bool walking;
 
     void Update ()
@@ -27,11 +33,7 @@ public class PlayerInputSender : MonoBehaviour
 			} else {			
 				PlayerInputWriter.Send (new PlayerInput.Update ().AddIdle (new Idle ()));
 			}
-
-			if (flagCollided) 
-			{
-				PlayerInputWriter.Send (new PlayerInput.Update ().AddFlagcaptured (new Flagcaptured ()));
-			}
+				
 
         var update = new PlayerInput.Update();
         update.SetJoystick(new Joystick(xAxis, yAxis));
@@ -39,22 +41,20 @@ public class PlayerInputSender : MonoBehaviour
 
     }
 
-		private void OnTriggerEnter(Collider other)
+		private void OnCollisionEnter(Collision other)
 		{
 			if (other != null && other.gameObject.CompareTag("Flag"))
 			{
-				flagCollided = true;
+				if ( PlayerInputWriter == null) {
+					return;
+				} else {
+					//HaveFlagWriter.Send (new HaveFlag.Update ().SetHaveFlag (true));
+					FlagPositionSender.isCaptured = true;
+					PlayerInputWriter.Send (new PlayerInput.Update ().AddFlagcaptured (new Flagcaptured ()));
+				}
 			}
 		}
-
-		private void OnTriggerExit(Collider other) 
-		{
-			if (other != null && other.gameObject.CompareTag ("Flag")) 
-			{
-				flagCollided = false;
-			}
-					
-		}
+			
 	}
 
 }

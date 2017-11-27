@@ -1,0 +1,7 @@
+package improbable.player;
+
+component HaveFlag
+{
+  id = 1750;
+  bool have_flag = 1;
+}

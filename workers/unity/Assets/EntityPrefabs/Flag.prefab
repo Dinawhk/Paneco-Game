@@ -76,10 +76,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013258905692}
   - component: {fileID: 95000012020201790}
-  - component: {fileID: 114779600149499976}
   - component: {fileID: 23852120534192808}
   - component: {fileID: 65937340511296742}
   - component: {fileID: 54706607873080968}
+  - component: {fileID: 114972471007091046}
+  - component: {fileID: 114040733529025932}
   m_Layer: 0
   m_Name: Flag
   m_TagString: Flag
@@ -120,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014124467848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.28, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4000013663951846}
@@ -323,11 +324,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014124467848}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 5.2283516, z: 1}
+  m_Center: {x: 0, y: 2.1141758, z: 0}
 --- !u!95 &95000012020201790
 Animator:
   serializedVersion: 3
@@ -345,7 +346,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114779600149499976
+--- !u!114 &114040733529025932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014124467848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56498f235c1c48d6bc9447c9f0977cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flag: {fileID: 1000014124467848}
+--- !u!114 &114972471007091046
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -397,8 +410,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: 0.2144174, z: -0.00025004143}
-    m_Extent: {x: 0.5, y: 0.849393, z: 0.00025178815}
+    m_Center: {x: 0, y: 0.21441734, z: -0.00025009105}
+    m_Extent: {x: 0.49999988, y: 0.84939295, z: 0.00025178812}
   m_DirtyAABB: 0
 --- !u!138 &138000014081588628
 FixedJoint:

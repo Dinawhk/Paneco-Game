@@ -35,9 +35,6 @@ public class PlayerMover : MonoBehaviour {
 
 		transform.Translate (direction * Time.deltaTime * SimulationSettings.PlayerAcceleration);
 		//rigidbody.AddForce(direction * SimulationSettings.PlayerAcceleration);
-
-
-
 		var pos = rigidbody.position;
 		var positionUpdate = new Position.Update()
 			.SetCoords(new Coordinates(pos.x, pos.y, pos.z));

@@ -15,7 +15,7 @@ using UnityEngine;
              * Unity's OnTriggerEnter runs even if the MonoBehaviour is disabled, so non-authoritative UnityWorkers
              * must be protected against null writers
              */
-			if (HealthWriter == null)
+		if (HealthWriter == null)
 				return;
 
 		// Ignore collision if this ship is already dead
@@ -27,6 +27,10 @@ using UnityEngine;
 				// Reduce health of this entity when hit
 				int newHealth = HealthWriter.Data.currentHealth - 20;
 				HealthWriter.Send(new Health.Update().SetCurrentHealth(newHealth));
+
+
+
+
 			}
 		}
 	}

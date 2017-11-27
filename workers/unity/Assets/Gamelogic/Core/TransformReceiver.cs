@@ -29,6 +29,7 @@ namespace Assets.Gamelogic.Core
 
         void OnPositionUpdated(Position.Update update)
         {
+			
             if (PositionReader.Authority == Authority.NotAuthoritative)
             {
                 if (update.coords.HasValue)
